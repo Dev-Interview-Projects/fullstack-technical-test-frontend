@@ -1,18 +1,21 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { UserPlus, User, Mail, Lock, Eye, EyeOff } from '@lucide/vue'
+import { createUser } from '@/services/user.service'
 
 const showPassword = ref(false)
 const name = ref('')
 const email = ref('')
 const password = ref('')
 
-const registerUser = () => {
-    console.log({
+const registerUser = async () => {
+    const response = await createUser({
         name: name.value,
         email: email.value,
         password: password.value
-    });
+    })
+
+    console.log('Usuario registrado:', response.data)
 }
 </script>
 
