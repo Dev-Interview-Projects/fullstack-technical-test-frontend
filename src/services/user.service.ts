@@ -6,6 +6,14 @@ export interface RegisterUserData {
   password: string
 }
 
+export interface RegisterUserResponse {
+  id: number
+  name: string
+  email: string
+  role: 'USER' | 'ADMIN'
+}
+
 export const createUser = async (data: RegisterUserData) => {
-  return api.post('/users', data)
+  const response = await api.post<RegisterUserResponse>('/users', data)
+  return response.data
 }
