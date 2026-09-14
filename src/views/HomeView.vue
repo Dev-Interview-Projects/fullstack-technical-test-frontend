@@ -30,7 +30,7 @@ import { ArrowRight, LogIn } from '@lucide/vue'
             </RouterLink>
 
             <RouterLink
-              to="/login"
+              to="/register"
               class="flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-6 py-3 font-semibold text-gray-700 transition-all hover:border-gray-400 hover:bg-gray-50 hover:text-gray-900"
             >
               <LogIn class="h-4 w-4" />
