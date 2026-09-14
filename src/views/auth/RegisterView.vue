@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { UserPlus, User, Mail, Lock, Eye, EyeOff } from '@lucide/vue'
+import { toast } from 'vue-sonner'
 import { createUser } from '@/services/user.service'
 
 const showPassword = ref(false)
@@ -9,13 +10,21 @@ const email = ref('')
 const password = ref('')
 
 const registerUser = async () => {
-    const response = await createUser({
-        name: name.value,
-        email: email.value,
-        password: password.value
+  try {
+    await createUser({
+      name: name.value,
+      email: email.value,
+      password: password.value,
     })
 
-    console.log('Usuario registrado:', response.data)
+    toast.success('Usuario registrado exitosamente. Por favor, inicia sesión.')
+
+    name.value = ''
+    email.value = ''
+    password.value = ''
+  } catch {
+    toast.error('Error al registrar el usuario. Por favor, inténtalo de nuevo.')
+  }
 }
 </script>
 
